@@ -10,6 +10,7 @@ import newsPage from './components/pages/news/news.vue'
 import customerPage from './components/pages/customer/customer.vue'
 import loginPage from './components/pages/login.vue'
 import dashboard from './components/pages/dashboard/dashboard.vue'
+import orderPage from './components/pages/order/order.vue'
 Vue.use(VueRouter)
 
 import CKEditor from '@ckeditor/ckeditor5-vue2';
@@ -22,7 +23,8 @@ const routes = [
   { path: '/product', name: 'product', component: productPage, meta: { requiresAuth: true } },
   { path: '/category', name: 'category', component: categoryPage, meta: { requiresAuth: true } },
   { path: '/news', name: 'news', component: newsPage, meta: { requiresAuth: true } },
-  { path: '/customer', name: 'customer', component: customerPage, meta: { requiresAuth: true } }
+  { path: '/customer', name: 'customer', component: customerPage, meta: { requiresAuth: true } },
+  { path: '/order', name: 'order', component: orderPage, meta: { requiresAuth: true } }
 ]
 
 const router = new VueRouter({

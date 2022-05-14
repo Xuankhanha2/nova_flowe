@@ -32,12 +32,13 @@
                 </div>
             </router-link>
 
-
-            <div class="nav-item">
-                <div class="select-highline"></div>
-                <div class="nav-item-icon manage-bill-icon"></div>
-                <div class="nav-item-text">Quản lý hóa đơn</div>
-            </div>
+            <router-link to="order">
+                <div class="nav-item">
+                    <div class="select-highline"></div>
+                    <div class="nav-item-icon manage-bill-icon"></div>
+                    <div class="nav-item-text">Quản lý hóa đơn</div>
+                </div>
+            </router-link>
 
             <router-link to="news">
                 <div class="nav-item">
