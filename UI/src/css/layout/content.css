@@ -1,0 +1,132 @@
+/* .productRow */
+.productRow {
+    margin: 0px;
+    padding: 0px;
+    width: 1200px;
+    margin-top: 15px;
+}
+
+.categoryName {
+    margin: 0px;
+    padding: 0px;
+    width: 300px;
+    line-height: 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f99717;
+    border-radius: 30px;
+    padding-left: 15px;
+}
+
+    /*.categoryName:hover {
+        background-color: #5c3d21;
+        cursor: pointer;
+    }*/
+
+.productList {
+    width: 1200px;
+    margin: 0px !important;
+    padding: 0px;
+    margin-top: 12px !important;
+    /* justify-content: space-around; */
+}
+.marginProductCell{
+    padding: 0px 8px !important;
+    margin: 0px 0px 16px 0px !important;
+}
+
+.widgetBar{
+    display: flex;
+    line-height: 40px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 0px;
+    padding-right: 24px;
+}
+.history{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.parentPage a{
+    text-decoration: none;
+    color: blueviolet;
+    font-size: 16px;
+}
+.parentPage a:hover{
+    text-decoration: none;
+    color: green;
+}
+
+.currentPage{
+    color: brown;
+    font-size: 16px;
+}
+.filterPrice{
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+.filterPrice input{
+    line-height: 24px;
+    box-shadow: border-box;
+    padding: 0px;
+    padding-left: 8px;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+}
+
+.filterPrice label{
+    padding: 0px;   
+    margin: 8px;
+    line-height: 40px;
+}
+#btnFilter{
+    font-weight: 500;
+    line-height: 26px;
+    border-radius: 4px;
+    border: 1px solid rgb(170, 86, 156);
+    padding: 0px 16px;
+    background-color: palegreen;
+    color: brown;
+    margin-left: 8px;
+}
+.sort{
+    display: flex;
+    align-items: center;
+}
+.sort label{
+    font-size: 16px;
+    margin: 0px;
+    margin-right: 8px;
+}
+
+.sort select:focus{
+    outline: none;
+}
+.sort select{
+    height: 24px;
+    line-height: 24px;
+    padding: 0px;
+    border: 1px solid;
+    border-radius: 4px;
+    border: 1px solid #dddddd;
+    font-size: 16px;
+    min-width: 150px;
+}
+
+.newsPageList{
+    margin-top: 16px !important;
+    width: 100%;
+    font-size: 14px;
+    padding: 0px 16px;
+}
+
+.alignRight{
+    justify-content: end;
+}

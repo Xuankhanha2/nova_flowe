@@ -1,0 +1,101 @@
+.banner {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0px;
+    display: flex;
+}
+
+.bannerLogo {
+    margin: 0px;
+    padding: 0px;
+}
+
+.bannerLogo img {
+    width: 200px;
+    height: 200px;
+}
+
+.bannerContent {
+    padding: 0px;
+    margin: 0px;
+    width: 1000px;
+    height: 200px;
+    position: relative;
+}
+
+.bannerContent ul {
+    list-style: none;
+    padding: 0px;
+    display: flex;
+    margin: 0px;
+    margin-top: 55px;
+    padding-left: 15px;
+}
+
+.bannerContent ul li {
+    display: flex;
+    padding: 0px;
+    margin: 0px 20px;
+}
+
+.bannerContent ul li img {
+    width: 60px;
+    height: 60px;
+}
+
+.bannerContent ul li h1 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+
+.bannerContent ul li p {
+    padding: 0px;
+    margin: 0px;
+    font-size: 14px;
+    color: #77778d;
+    padding: 5px 5px;
+}
+
+.cart {
+    background-color: #f99717;
+    position: absolute;
+    z-index: 0;
+    padding: 0px 10px;
+    border-radius: 20px;
+    line-height: 30px;
+    color: antiquewhite;
+    right: 10px;
+    top: 75px;
+}
+
+.cart a {
+    text-decoration: none;
+    color: white;
+    margin-left: 5px;
+    font-size: 13px;
+}
+.cart a:hover{
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.cart #countCart {
+    margin: 0px;
+    padding: 0px;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    color: white;
+    font-size: 11px;
+    position: absolute;
+    line-height: 18px;
+    border-radius: 18px;
+    top: -5px;
+    right: 0px;
+}

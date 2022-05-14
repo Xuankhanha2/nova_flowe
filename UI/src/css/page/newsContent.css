@@ -1,0 +1,20 @@
+#newsTitle{
+    font-size: 28px;
+    font-weight: bold;
+}
+#newsImage{
+    width: 100%;
+    text-align: center;
+}
+#newsImage img{
+    margin: auto;
+    border: blue;
+    min-width: 100px;
+    min-height: 100px;
+}
+#newsContent{
+    font-size: 14px;
+}
+#sideBar{
+    border: 1px solid #ebebeb;
+}

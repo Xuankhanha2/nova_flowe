@@ -1,0 +1,150 @@
+
+
+.cartTitle {
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.cartTitle span {
+    color: #999999;
+    font-size: 18px;
+}
+
+.cartContentLeft {
+    margin: 0px !important;
+    padding: 0px;
+    margin-top: 16px !important;
+}
+
+.cartContentLeft table {
+    width: 100%;
+}
+
+
+.cartContentLeft table tr {
+    /* border-bottom: 1px solid #ebebeb; */
+    box-shadow: 1px 1px 2px #999999;
+}
+
+.cartContentLeft table tr th {
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    font-weight: 600;
+    background-color: #fef79c;
+}
+
+
+.listProduct td h2{
+    font-size: 16px;
+    font-weight: bold;
+    color: blueviolet;
+    cursor: pointer;
+}
+.listProduct td img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+}
+
+#number{
+    line-height: 24px;
+    min-width: 50px;
+    text-align: center;
+    border: 0px;
+}
+
+.listProduct {
+    margin: 0px;
+    padding: 0px;
+}
+
+.listProduct td {
+    text-align: center;
+    font-size: 16px;
+    height: 150px;
+    line-height: 150px;
+    min-width: 30px;
+}
+.deleteProduct{
+    position: relative;
+}
+.deleteProduct i{
+    position: absolute;
+    line-height: 16px !important;
+    top: 16px;
+    cursor: pointer;
+    color: #999999 !important;
+}
+
+.deleteProduct a:hover {
+    color: black !important;
+}
+.payInfor {
+    margin: 0px !important;
+    font-size: 16px;
+    margin-top: 16px !important;
+}
+.saleTiket {
+    border-radius: 4px;
+    padding-top: 12px;
+    padding-left: 12px;
+    background-color: #ebebeb;
+    padding-bottom: 16px;
+}
+.saleTiket p{
+    color: #474242;
+    font-weight: bold;  
+    margin-bottom: 8px;
+}
+.saleTiket a {
+    text-decoration: none;
+    padding-left: 24px;
+}
+
+.payBox {
+    border-radius: 4px;
+    margin-top: 16px;
+    background-color: #ebebeb;
+    padding: 12px;
+}
+
+.payBox p {
+    font-weight: bold;  
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #474242;
+    padding: 0px;
+}
+
+.local {
+    padding-left: 24px;
+}
+.payBox h4{
+    font-size: 20px;
+}
+.payBox span {
+    font-size: 20px;
+    color: red;
+}
+
+.pay {
+    text-align: center;
+    padding: 0px;
+    border-radius: 4px;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.payInfor a {
+    text-decoration: none;
+}
+
+.btnCart{
+    font-size: 14px;
+    font-size: 16px !important;
+    margin-top: 16px !important;
+    margin-right: 12px !important;
+}

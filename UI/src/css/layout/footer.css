@@ -1,0 +1,135 @@
+/* footer */
+.footer {
+    margin: 0px;
+    padding: 0px;
+    background-color: #83bb3e;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    color: white;
+}
+    /* footerContent */
+    .footerContent {
+        width: 1200px;
+        margin: 0px auto;
+    }
+
+        .footerTop {
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            padding-top: 25px;
+            justify-content: space-between;
+        }
+    /* footer top left */
+    .ftl {
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .ftlTitle {
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+        }
+
+        .ftlContent {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .ftlContent ul {
+            margin: 0px;
+            padding-left: 24px;
+            list-style: none;
+        }
+
+        .ftlContent ul li {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .ftlContent ul li i{
+            width: 16px;
+            text-align: center;
+        }
+    /* end footer top left */
+
+    /* fooetr top middle */
+    .ftm {
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .ftmTitle{
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            padding-left: 24px;
+        }
+
+        .ftmContent {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .ftmContent ul {
+            list-style: disc;
+            margin: 0px;
+            padding-left: 72px;
+        }
+
+        .ftmContent ul li {
+            padding: 0px;
+            margin-top: 5px;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .ftmContent ul li a {
+            color: white;
+            text-decoration: none !important;
+        }
+
+        .ftmContent ul li a:hover {
+            text-decoration: underline;
+        }
+    /* end footer top middle */
+
+    /* footer top right */
+    .ftr {
+        margin: 0px;
+        padding: 0px;
+    }
+
+        .ftrContent {
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+
+        .ftrContent iframe {
+            width: 250px;
+            height: 180px;
+            cursor: pointer;
+            border: 0px;
+        }
+
+        .ftrContent a {
+            position: absolute;
+            top: 10px;
+            left: 25px;
+            font-size: 18px;
+            color: floralwhite;
+            font-weight: bold;
+            text-shadow: 1px 1px blue;
+            text-decoration: none;
+        }
+
+        .ftrContent a:hover{
+            text-decoration: none !important;
+        }
+    /* end footer top right */
+/* end footer */
+.footer2 {
+    background-color: #ff5722;
+    height: 60px;
+}

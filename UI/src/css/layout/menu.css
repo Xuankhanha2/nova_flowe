@@ -1,0 +1,192 @@
+.mainMenu {
+    margin: 0px;
+    padding: 0px;
+    background-color: #83bb3e;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    font-size: 16px;
+}
+
+.menuContent {
+    margin: 0px auto;
+    padding: 0px;
+    width: 1200px;
+    display: flex;
+}
+
+.menuLeft {
+    margin: 0px;
+    padding: 0px;
+    line-height: 45px;
+    width: 70%;
+}
+
+.menuLeft ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    line-height: 45px;
+    position: relative;
+}
+.menuLeft ul a{
+    text-decoration: none;
+    color: #FFF !important;
+}
+.menuLeft ul li {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    padding: 0px 15px;
+}
+
+/* .menuLeft ul li a {
+    
+} */
+
+.menuLeft ul li:hover {
+    background-color: #058134;
+}
+
+.menuContent ul li #subMenu{
+    /* background-color: #fef79c; */
+    background-color: #FFF;
+    position: absolute;
+    width: 1200px;
+    max-height: calc(100vh - 60px);
+    padding:0px 24px 24px 24px;
+    overflow-y: auto;
+    top: 44px;
+    left: 0px;
+    /* border-radius: 0px 0px 10px 10px; */
+    /* border: 1px solid #ff5722; */
+    border-top: 0px;
+    display: none;
+    box-shadow: 1px 1px 3px #000000;
+}
+
+.menuContent ul li #subMenu .justify-content-start{
+    margin: 0px !important;
+    padding-top: 16px;
+
+}
+
+.menuContent ul li #subMenu .row a:hover{
+    color: #aaa !important;
+}
+
+/* .menuContent ul li #subMenu a {
+    color: #000 !important;
+    text-decoration: none;
+} */
+
+.menuLeft ul li:hover #subMenu {
+    display: block;
+}
+
+.categoryItem{
+    text-align: left;
+    padding-left: 24px !important;
+    cursor: pointer;
+    color: #888;
+}
+
+.categoryItem:hover{
+    color: #000;
+}
+
+.search {
+    padding: 0px;
+    margin: 0px;
+    width: 30%;
+    line-height: 45px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search input {
+    border: 0px;
+    height: 30px;
+    margin: 0px;
+    padding: 0px;
+    width: calc(100% - 36px);
+    margin-top: 2px;
+}
+
+.search button {
+    padding: 0px;
+    margin: 0px;
+    height: 30px;
+    width: 30px;
+}
+
+.search .search-bg {
+    background-color: white;
+    line-height: 34px;
+    margin: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 300px;
+    padding: 0px 10px;
+    border-radius: 30px;
+}
+
+#smartSearch {
+    position: absolute;
+    width: 100%;
+    background: white;
+    margin: 0px auto;
+    top: 40px;
+    left: 0px;
+    z-index: 1000;
+    box-shadow: 1px 1px 3px #000000;
+}
+
+#smartSearch img {
+    width: 70px;
+    height: 70px;
+}
+
+#smartSearch ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+}
+
+#smartSearch ul li {
+    padding: 0px;
+    margin: 0px;
+    height: 80px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+#smartSearch ul li:hover{
+    background-color: #eee;
+}
+.productSearchContent{
+    height: 60px;
+    font-family: sans-serif;
+    padding-left: 12px;
+}
+.productSearchContent h2{
+    color: #ff5722;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0px;
+}
+.productSearchContent h3{
+    color: #f99717;
+    font-size: 16px;
+    padding: 0px;
+    font-weight: bold;
+}
+.search input:focus {
+    outline: none;
+}

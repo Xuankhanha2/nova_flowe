@@ -1,0 +1,16 @@
+
+.categoryDetail{
+    width: 350px !important;
+}
+.deleteBorderRight{
+    border-right: 0px !important;
+}
+
+.changePaddingBottom{
+    padding-bottom: 24px !important;
+
+}
+.tooltipChangePosition{
+    left: 5% !important;
+    top: 120% !important;
+}

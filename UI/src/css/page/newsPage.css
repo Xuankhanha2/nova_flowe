@@ -1,0 +1,91 @@
+.newsPage{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.listNews {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: block;
+}
+.listTitle {
+    font-size: 18px;
+    background-color: #5c3d21;
+    padding: 0px 12px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    color: white;
+    border-radius: 4px;
+}
+.listNews ul {
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px;
+    list-style: none;
+}
+
+.listNews ul li {
+    display: flex;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.listNews ul li a {
+    text-decoration: none;
+}
+
+.listNews ul li h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+.listNews ul li h3:hover {
+    color: rgb(93, 126, 29);
+}
+
+.listNews ul li p {
+    width: 100%;
+    color: brown;
+    font-size: 16px;
+    height: 100px;
+    overflow-y: hidden;
+}
+
+.listNews ul li img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-bottom: 1px solid #28a745;
+}
+
+.btnDetail {
+    display: inline;
+    padding: 0px 16px;
+    line-height: 36px;
+    border-radius: 0px;
+    font-size: 16px;
+    position: absolute;
+    right: 16px;
+    bottom: 0px;
+}
+
+.newsRow {
+    padding-left: 12px;
+    border-bottom: 1px solid #28a745;
+}
+.newsRow h3{
+    font-size: 18px;
+    color: #000;
+    cursor: pointer;
+}
+.newsRow p{
+    font-size: 14px;
+    cursor: pointer;
+}
+.newsRow p:hover{
+    color:blueviolet;
+}
+

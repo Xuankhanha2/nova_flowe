@@ -1,0 +1,10 @@
+.form{
+    width: 960px !important;
+}
+.ck-reset{
+    margin-right: 16px !important;
+}
+.ck-content{
+    height: 300px !important;
+    overflow-y: auto !important;
+}

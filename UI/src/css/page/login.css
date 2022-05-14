@@ -1,0 +1,45 @@
+.loginPage{
+    padding: 12px 15px !important;
+    background-color:antiquewhite;
+}
+.formGroup{
+    /* margin-top: 12px !important; */
+    font-size: 16px !important;
+}
+.loginLogo{
+    margin-top: 16px !important;
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+    font-size: 24px !important;
+}
+.loginInput{
+    font-size: 16px !important;
+}
+.loginCheckbox{
+    font-size: 16px !important;
+}
+.rememberMe{
+    display: flex;
+    align-items: center;
+}
+#checkBox{
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0px !important;
+}
+.forgotPassword{
+    font-size: 16px;
+}
+#registerLink{
+    font-size: 16px !important; 
+    margin-top: 12px;
+
+}
+#registerLink{
+    text-align: center;
+}
+.alertFont{
+    color: red;
+    font-size: 14px !important;
+}

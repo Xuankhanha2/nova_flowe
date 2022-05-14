@@ -1,0 +1,240 @@
+.homeContent {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.h-icon{
+    color: #ffffff;
+}
+.wrapper{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+.fixed{
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+}
+.fixed img{
+    object-fit: cover;
+    object-position: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    display: block;
+    margin-top: 10px;
+}
+/* banner */
+
+/* end banner */
+
+.slide{
+    margin: 0px !important;
+    position: relative;
+    box-shadow: border-box;
+}
+.slideItem{
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+}
+.slide img{
+    padding: 0px !important;
+    width: calc(100% - 15px);
+    height: 335px;
+    border-radius: 8px;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.imageOnTop{
+    z-index: 999 !important;
+}
+    /* /slide */
+/* end Slide show & danh muc */
+
+/*
+banner middle
+*/
+.bannerMiddle{
+    margin: 20px auto;
+    padding: 0px;
+    width: 1200px;
+    text-align: center;
+    max-height: 250px;
+}
+.bannerMiddle img{
+    border-radius: 5px;
+    width: 100%;
+    max-height: 250px;
+    object-position: center;
+    object-fit: cover;
+}
+
+/* dich vụ-chính sách */
+.serviceTitle{
+    margin: 0px;
+    padding: 0px;
+    width: 1200px;
+    margin-top: 30px;
+    position: relative;
+    line-height: 40px;
+}
+.serviceTitle p{
+    margin: 0px;
+    padding: 0px;
+    padding: 5px 15px;
+    text-align: center;
+    background-color: #5c3d21;
+    color: white;
+    line-height: 40px;
+    width: 250px;
+    font-size: 16px;
+    margin: 0px auto;
+    border-radius: 30px;
+    z-index: 1;
+}
+.serviceTitle hr{
+    height: 1px;
+    width: 1200px;
+    position: absolute;
+    top: 10px;
+    background-color: #5c3d21;
+    z-index: -1;
+}
+.service{
+    margin: 0px;
+    padding: 0px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.serviceContent{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+.serviceContent img{
+    width: 500px;
+    margin: 0px;
+    padding: 0px;
+    height: 200px;
+    border-radius: 16px;
+}
+.policy{
+    width: 350px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    background: rgba(104, 173, 25, 0.6);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 16px;
+    padding: 10px 0px;
+
+}
+.policy span{
+    font-size: 16px;
+    font-weight: normal;
+    font-style: italic;
+}
+/* end dich vụ-chính sách */
+.newsContent{
+    margin: 0px;
+    padding: 0px;
+    width: 1200px;
+    
+    margin-top: 10px;
+}
+.newsContent .newsList{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.newsCell{
+    border: 1px solid #ff5722;
+    border-radius: 16px;
+    text-align: center;
+    padding: 16px;
+    position: relative;
+    margin-top: 16px;
+    width: 30% !important;
+    
+}
+
+.newsCell img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    /* border-radius: 4px; */
+}
+.newsCell h1{
+    font-size: 18px;
+    color: black;
+    margin: 0px;
+    padding: 0px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.newsCell h1 a{
+    text-decoration: none;
+    color: #000;
+}
+.newsCell h1 a:hover{
+    text-decoration: none;
+    color: brown;
+}
+.newsCell p{
+    padding: 0px;
+    /* text-align: left; */
+    margin-top: 10px;
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.newsCell p{
+    color: #667766;
+    font-size: 16px;
+}
+.detailNewsBtn{
+    /* position: absolute; */
+    line-height: 30px;
+    margin: 0px;
+    color: white;
+    background-color: #f99717;
+    font-size: 14px;
+    text-align: center;
+    /* padding: 5px; */
+    width: 120px;
+    /* margin: 5px auto; */
+    cursor: pointer;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%,0%)
+}
+.detailNewsBtn:hover{
+    background-color: #5c3d21;
+}
+
+
+

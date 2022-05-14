@@ -1,0 +1,672 @@
+
+/* History */
+
+.history {
+    margin: 0px;
+    padding: 0px;
+    line-height: 40px;
+    display: flex;
+}
+
+.history label {
+    font-size: 18px;
+}
+
+.history ul {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    list-style: none;
+    width: 65%;
+}
+
+.history ul li {
+    margin: 0px;
+    padding: 0px;
+}
+
+.history ul li a {
+    color: #999999;
+    text-decoration: none;
+}
+
+.history ul li span {
+    color: #000;
+}
+
+.history ul li a:hover {
+    color: #000;
+}
+
+/* end History */
+
+/* Noi dung chi tiet san pham */
+
+.productDetail {
+    margin: 0px;
+    padding: 0px;
+    width: 1200px;
+    display: flex;
+    margin-top: 20px;
+    /* justify-content: space-around; */
+}
+
+.productDetail .blockLeft {
+    /* width: 400px; */
+    /* border: 1px solid #ff5722; */
+    padding-bottom: 15px;
+}
+
+.mainImage img {
+    width: 100%;
+    border: 1px solid #ff5722;
+}
+
+.blockLeft .productImage {
+    margin: 0px;
+    padding: 0px;
+}
+
+.productImage img {
+    width: 100%;
+    height: calc(width);
+}
+
+.otherImage {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 15px;
+}
+
+.active {
+    border: 1px solid #ff5722 !important;
+    opacity: 1 !important;
+}
+
+.otherImage ul {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    justify-content: space-around;
+}
+
+.otherImage ul li {
+    margin: 0px 8px;
+    padding: 0px;
+    line-height: 50px;
+}
+
+.otherImage ul li img {
+    opacity: 0.5;
+    border: 1px solid #ebebeb;
+}
+
+.otherImage ul li:hover img {
+    opacity: 1;
+    border: 1px solid #ff5722;
+}
+.blockRight {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 16px;
+}
+
+/* Product infor */
+.productInfor {
+    width: 100%;
+    height: 370px;
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 1px solid #83bb3e;
+}
+
+.productInfor h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #5c3d21;
+    margin: 0px;
+    padding: 0px;
+    /* margin-bottom: 25px; */
+}
+
+.stars {
+    margin: 8px 0px;
+    padding: 0px;
+    color: yellow;
+    font-size: 24px;
+}
+
+.productInfor h2 {
+    font-size: 25px;
+    color: #ff5722;
+    font-weight: bold;
+    margin: 8px 0px;
+}
+
+.detail {
+    margin: 8px 0px;
+    font-size: 14px;
+    color: #999999;
+    height: 80px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.productInfor hr {
+    background-color: #83bb3e;
+    margin: 0px;
+    padding: 0px;
+}
+
+.productStatus {
+    margin: 8px 0px;
+    padding: 0px;
+}
+
+.productStatus span {
+    font-weight: bold;
+    color: #83bb3e;
+}
+
+.quantity {
+    margin: 8px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.quantity #soluong {
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    border-collapse: collapse;
+    border: 0px;
+}
+
+#increaseBtn, #decreaseBtn{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: #ddd;
+    line-height: 30px;
+    padding: 0px;
+    border: 0px;
+    color: #666;
+}
+
+#btnAddCart{
+    font-size: 18px !important;
+    margin-top: 12px;
+}
+/* end Product ìnfor */
+
+/* Từ khóa và link  */
+.keyword {
+    margin: 0px;
+    padding: 0px;
+    margin-left: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.page {
+    margin: 0px;
+    padding-left: 5px;
+    margin-top: 10px;
+}
+
+.page i {
+    margin: 0px 5px;
+    opacity: 0.5;
+    font-size: 22px;
+}
+
+.page i:hover {
+    opacity: 1;
+    color: #000;
+}
+
+.moreChoice {
+    padding: 0px !important;
+}
+
+.catogory {
+    margin: 0px;
+    padding: 0px;
+}
+
+.catogoryTitle {
+    line-height: 35px;
+    background-color: #f99717;
+    border-radius: 5px 5px 0px 0px;
+    padding-left: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.catogoryContent {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    border: 1px solid #f99717;
+    padding-bottom: 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.catogoryContent ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    max-height: 420px;
+    overflow-y: auto;
+}
+.catogoryContent ul::-webkit-scrollbar{
+    width: 5px;
+}
+.catogoryContent ul::-webkit-scrollbar-button{
+    display: none;
+}
+.catogoryContent ul::-webkit-scrollbar-thumb{
+    background: #5c3d21;
+    border-radius: 5px;
+}
+
+.catogoryContent ul li {
+    line-height: 35px;
+    padding-left: 25px;
+    background-color: #fef79c;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+
+.catogoryContent ul li a {
+    color: #5c3d21;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.catogoryContent ul li:hover {
+    background-color: #ffcc4d;
+}
+
+.catogoryContent ul li i {
+    color: #258031;
+    margin-right: 10px;
+}
+
+.adv {
+    width: 300px;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 20px;
+    z-index: -1;
+}
+
+.owl-carousel {
+    z-index: -1 !important;
+}
+
+.item {
+    margin: 0px;
+    padding: 0px;
+    height: 250px;
+    z-index: -1;
+}
+
+.owl-carousel {
+    margin: 0px;
+    padding: 0px;
+    height: 250px;
+}
+
+.item img {
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+}
+
+/* end Noi dung chi tiet san pham */
+
+
+
+/* Mo ta - danh gia san pham */
+
+.otherDetailContent {
+    width: 1200px;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.descriptionAndRating {
+    margin: 0px;
+    padding-right: 0px !important;
+}
+
+.description {
+    margin: 0px;
+    padding: 0px;
+    width: 834px;
+    margin-bottom: 15px;
+}
+
+.descriptionTitle {
+    min-width: 100px;
+    display: inline-block;
+    line-height: 40px;
+    border-radius: 7px;
+    background-color: #ff5722;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.descriptionContent {
+    border: 1px solid#ebebeb;
+    padding: 25px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #77778d;
+    height: auto;
+}
+
+.shortenContent{
+    max-height: 200px;
+    overflow-y: hidden;
+}
+
+.fullContent{
+    max-height: fit-content;
+    height: auto;
+}
+/* Danh giá san pham */
+
+.rating {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 15px;
+    border: 1px solid #ebebeb;
+    padding: 20px 0px;
+}
+
+.ratingTitle {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+    padding: 0px;
+    font-weight: bold;
+    color: black;
+}
+
+.ratingContent {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+    border: 1px solid #ebebeb;
+    padding: 10px;
+    position: relative;
+}
+
+.ratingContent span {
+    font-size: 35px;
+    font-weight: bold;
+    color: #fe9727;
+}
+
+.ratingContent i {
+    color: #fe9727;
+    margin: auto 0px;
+}
+
+.starColor {
+    color: #fe9727 !important;
+    cursor: pointer;
+}
+
+.ratingContent ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ratingContent ul li {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    line-height: 25px;
+}
+
+.ratingContent ul li span {
+    font-size: 18px;
+    margin: auto 0px;
+    color: #77778d;
+}
+.ratingContent ul li label{
+    font-size: 16px;
+}
+
+.ratingContent ul li i {
+    color: #77778d !important;
+    margin: auto 2px;
+}
+
+.ratingContent ul li .ratingPercentBar {
+    height: 10px;
+    width: calc(100% - 400px);
+    border-radius: 3px;
+    background-color: #77778d;
+    margin: auto 10px;
+    position: relative;
+}
+
+.ratingPercent {
+    background-color: #03a0e2;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 3px;
+    min-width: 0%;
+    max-width: 100%;
+    height: 100%;
+}
+
+.zeroPercent {
+    width: 0% !important;
+}
+
+.ratingContent ul li label {
+    margin: auto 0px;
+}
+
+.ratingBtn {
+    line-height: 40px;
+    width: 180px;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 100px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+.ratingBtn:hover{
+    cursor: pointer;
+    background-color: #03a0e2 !important;
+}
+
+/* form danh gia */
+.ratingForm {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+    margin-top: 15px;
+}
+
+.ratingForm #txtbox {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid #ebebeb;
+    height: 100px;
+    padding: 5px;
+    font-size: 16px;
+}
+    #txtbox{
+        outline: none;
+    }
+.ratingForm .btnSend {
+    margin: 0px;
+    padding: 5px 10px;
+    border: 1px solid black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.ratingStars {
+    text-align: center;
+}
+
+.ratingStars h2 {
+    font-size: 18px;
+}
+
+.ratingStars i {
+    cursor: pointer;
+}
+
+/* end form danh gia */
+
+/* end Danh gia san pham */
+
+/* Mot so danh gia cua khach hang */
+
+.productRatingList {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+    border: 1px solid #ebebeb;
+    padding: 20px;
+}
+
+.ratingLine {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.userInfor {
+    display: flex;
+}
+
+.userInfor a {
+    text-decoration: none;
+    color: #000;
+}
+
+.userInfor h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.userInfor h4 {
+    font-size: 16px;
+    color: #999999;
+}
+
+.userAvatar {
+    margin: 0px;
+    padding: 0px;
+}
+
+.userAvatar img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.userRatingContent {
+    padding-left: 15px;
+}
+
+.userRatingContent p {
+    padding: 0px;
+    font-size: 16px;
+}
+
+/* san pham noi bat  */
+.suggestedProduct {
+    width: 100%;
+    padding: 0px !important;
+    margin-top: 35px !important;
+}
+
+.suggestedProductContent {
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid #f99717;
+}
+
+.suggestedProductContent ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+.suggestedProductContent ul li {
+    padding-left: 10px;
+    display: flex;
+    border-bottom: 1px solid #f99717;
+}
+
+.suggestedProductContent ul li:last-child {
+    border-bottom: 0px;
+}
+
+.suggestedProductContent ul img {
+    width: 120px;
+    margin: 0px;
+}
+
+.suggestedProductInfor {
+    padding-top: 15px;
+}
+
+.suggestedProductInfor p {
+    margin: 5px 0px;
+    font-weight: bold;
+    color: #5c3d21;
+    font-size: 18px;
+}
+.suggestedProductInfor p:hover{
+    cursor: pointer;
+}
+
+.suggestedProductInfor h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f99717;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.suggestedProductInfor h4 {
+    margin: 0px;
+}
+
+.suggestedProductInfor i {
+    color: #fe9727;
+    font-size: 14px;
+}
+/* and of san pham noi bat  */
+
+/* end Mo ta - Dang gia san pham */
+
+/*  */
+
+/* footer */
+
+/*end footer*/
