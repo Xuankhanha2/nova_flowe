@@ -44,11 +44,19 @@ namespace Core.Interfaces
         /// <summary>
         /// created by: KhanhVX
         /// created date: 10/5/2022
-        /// Hàm cập nhật thông tin hóa đơn
+        /// Hàm cập nhật thông tin chi tiết hóa đơn
         /// </summary>
         /// <param name="orderDetail">orderDetail</param>
         /// <returns></returns>
-        public ServiceResult updateOrder(OrderDetail orderDetail);
+        public ServiceResult updateOrderDetail(OrderDetail orderDetail);
+
+        /// <summary>
+        /// created by: KhanhVX
+        /// created date: 10/5/2022
+        /// </summary>
+        /// <param name="order">Order</param>
+        /// <returns></returns>
+        public ServiceResult updateOrder(Order order);
 
         /// <summary>
         /// created date: 10/5/2022

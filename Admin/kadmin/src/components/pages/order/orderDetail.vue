@@ -6,16 +6,38 @@
                 {{pageTitle}}
             </div>
             <div class="form-content">
-                
+                <div class="form-left remove-border">
+                    <newLabel :text="'Mã hóa đơn: '+cloneOrder.orderCode" :required="false"/>
+                    <newLabel :text="'Ngày lập: '+formatDate(cloneOrder.createdDate)" :required="false"/>
+                </div>
+                <div class="form-right">
+                    <newLabel :text="'Khách hàng: '+cloneOrder.customerName" :required="false"/>
+                    <newLabel :text="'Số điện thoại: '+cloneOrder.phoneNumber" :required="false"/>
+                    <newLabel :text="'Địa chỉ: '+cloneOrder.address" :required="false"/>
+                </div>
+            </div>
+            <div class="product-list">
+                <table class="product-grid" cellspacing="0" cellpadding="0" border="1">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                    <tr v-for="(value, index) of cloneOrder.orderDetails" :key="value.orderDetailId" :index="index">
+                        <td class="number-cell">{{index + 1}}</td>
+                        <td>{{value.productName}}</td>
+                        <td class="quantity-cell">{{value.quantity}}</td>
+                        <td class="money-cell">{{ formatMoney(value.price) }} vnđ</td>
+                        <td class="money-cell">{{ formatMoney(value.price * value.quantity) }} vnđ</td>
+                    </tr>
+                </table>
             </div>
             <div class="form-footer">
                 <div class="f-footer-left">
                     <div class="row-check non-margin">
-                        <!-- <input type="checkbox">
-                        <label></label>
-                        <div class="col-row-text">
-                            Ngừng kinh doanh
-                        </div> -->
+                        
                     </div>
                 </div>
                 <div class="f-footer-right">
@@ -24,15 +46,17 @@
                         :second="true"
                         @click.native="closeForm()"
                     />
-                    <!-- <newButton 
-                    :Text="'Lưu và thêm'"
-                    :second="false"
-                    v-if="isUpdate==false"
-                    /> -->
+                    <newButton 
+                        :Text="'Từ chối'"
+                        :second="true"
+                        v-if="cloneOrder.status === 0"
+                        @click.native="denyOrder()"
+                    />
                     <newButton 
                         :Text="'Chấp nhận'"
                         :second="false"
-                        @click.native="processData"
+                        v-if="cloneOrder.status === 0"
+                        @click.native="processData()"
                     />
                 </div>
             </div>
@@ -57,7 +81,7 @@
     created by: vu xuan khanh
     created date: 15/7/2021
 */
-// import newLabel from '../../layout/label.vue'
+import newLabel from '../../layout/label.vue'
 import newButton from '../../layout/button.vue'
 import axios from 'axios'
 import newPopup from '../../popup/notifyPopup.vue'
@@ -110,7 +134,7 @@ export default {
     },
     components:{
         // Textbox,
-        // newLabel,
+        newLabel,
         newButton,
         newPopup
     },
@@ -129,11 +153,13 @@ export default {
             //Kiem tra dữ liệu hợp lệ. Nếu hợp lệ thì thực hiện thêm - sửa
             if(isValid){
                 //Thục hiện sửa
+                this.cloneOrder.status = 1;
                 await axios.put(apiPath.order, this.cloneOrder, this.config).then((result)=>{
                     processResult = result.data;
                     //Hiển thị kết quả sau khi xử lý
                     this.showNotifyPopup(processResult.message);
                     this.loadData();
+                    this.closeForm();
                 }).catch(()=>{
                     this.showNotifyPopup("Đã có lỗi xảy ra.");
                 })
@@ -143,16 +169,36 @@ export default {
             }
             
         },
+
+        /** Hủy đơn hóa đơn */
+       async denyOrder(){
+            let processResult;
+            const isValid = this.validateData();
+            if(isValid){
+                this.cloneOrder.status = -1;
+                await axios.put(apiPath.order, this.cloneOrder, this.config).then((result)=>{
+                    processResult = result.data;
+                    //Hiển thị kết quả sau khi xử lý
+                    this.showNotifyPopup(processResult.message);
+                    this.loadData();
+                    this.closeForm();
+                }).catch(()=>{
+                    this.showNotifyPopup("Đã có lỗi xảy ra.");
+                })
+            }else{
+                return; 
+            }
+        },
+
         /**Hàm xử lý nghiệp vụ cho các ô nhập liệu*/
         validateData(){
             let isValid =  true;
             const quantity = this.cloneOrder.status;
-            if(quantity === null || quantity !== ""){
+            if(quantity === null || quantity === ""){
                 isValid = false;
                 this.required.status = true;
             }
             return isValid;
-            
         },
         /**Hàm format số tiền */
         formatMoney(native){
@@ -190,6 +236,14 @@ export default {
             this.popup = true;
             this.notifyText = msg;
         },
+
+        /**Hàm dùng để chỉnh lại định dạng ngày khi hiển thị */
+        formatDate(datetime){
+            let date = "";
+            if (datetime)
+                date = String(datetime).substring(0, 10).split("-").reverse().join("/");
+            return date;
+        },
             
     },
     created() {
@@ -201,5 +255,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    @import'../../../css/dictionary/product/productDetail.css'
+    @import'../../../css/dictionary/product/productDetail.css';
+    @import url('../../../css/dictionary/order/orderDetail.css');
 </style>

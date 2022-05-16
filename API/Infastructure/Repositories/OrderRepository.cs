@@ -21,6 +21,49 @@ namespace Infastructure.Repositories
             orderDetailRepository = new OrderDetailRepository();
         }
 
+        public override IEnumerable<entity> GetAll<entity>(int? pageNumber, int? items)
+        {
+            List<entity> trueList = new List<entity>();
+            string className = typeof(entity).Name;
+            string procName = $"procGet{className}s";
+            List<entity> list = dbConnection.Query<entity>(procName, commandType: CommandType.StoredProcedure).ToList();
+            foreach (var order in list)
+            {
+                Guid orderId = Guid.Parse(order.GetType().GetProperty("orderId").GetValue(order).ToString());
+                order.GetType().GetProperty("orderDetails").SetValue(order, orderDetailRepository.getOrderDetailByOrderId(orderId));
+                trueList.Add(order);
+            }
+            if (pageNumber != null && items != null)
+            {
+                //Số trang - mặc định số trang đầu tiền
+                int page = pageNumber ?? 1;
+                //Số lượng phần tử trong 1 trang - mặc định 10 phần tử
+                int number = items ?? 10;
+                //Chỉ số bắt đầu khi sao chép list
+                int startIndex = (page - 1) * number;
+                //Kiểm tra số lượng phần tử list > số lượng phần tử của 1 trang thì mới thực hiện 
+                if (list.Count > number)
+                {
+
+                    if (list.Count - startIndex >= number)
+                    {
+                        //nếu số phần tử còn lại tính từ vị trí startIndex đến phần tử cuối cùng của mảng lớn hơn số lượng phần tử của 1 trang
+                        entity[] subList = new entity[number];
+                        list.CopyTo(startIndex, subList, 0, number);
+                        return subList;
+                    }
+                    else
+                    {
+                        entity[] subList = new entity[list.Count - startIndex];
+                        list.CopyTo(startIndex, subList, 0, list.Count - startIndex);
+                        return subList;
+                    }
+                }
+
+            }
+            return trueList;
+        }
+
         /// <summary>
         /// created date: 10/5/2022
         /// created by: KhanhVX
@@ -116,9 +159,26 @@ namespace Infastructure.Repositories
         /// </summary>
         /// <param name="orderDetail"></param>
         /// <returns></returns>
-        public int updateOrder(OrderDetail orderDetail)
+        public int updateOrderDetail(OrderDetail orderDetail)
         {
             return orderDetailRepository.updateOrderDetail(orderDetail);
+        }
+
+        /// <summary>
+        /// created by: KhanhVX
+        /// created date: 10/5/2022
+        /// Hàm cập nhật hóa đơn
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public int updateOrder(Order order)
+        {
+            string procName = "procUpdateOrder";
+            DynamicParameters dynamicParameters = new DynamicParameters();
+            dynamicParameters.Add("orderId", order.orderId.ToString());
+            dynamicParameters.Add("status", order.status);
+            int result = dbConnection.Execute(procName, param: dynamicParameters, commandType: CommandType.StoredProcedure);
+            return result;
         }
     }
 }

@@ -59,7 +59,7 @@ export default {
          */
         logout(){
             localStorage.removeItem('customer');
-            this.$router.push('/home');
+            this.$router.push('/login');
         },
 
         /**

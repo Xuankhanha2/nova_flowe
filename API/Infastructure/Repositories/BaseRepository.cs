@@ -30,7 +30,7 @@ namespace Infastructure.Repositories
         /// </summary>
         /// <typeparam name="entity">đối tượng</typeparam>
         /// <returns>Danh sách toàn bổ dữ liệu trong bảng</returns>
-        public IEnumerable<entity> GetAll<entity>(int? pageNumber, int? items)
+        public virtual IEnumerable<entity> GetAll<entity>(int? pageNumber, int? items)
         {
             string className = typeof(entity).Name;
             string procName = $"procGet{className}s";

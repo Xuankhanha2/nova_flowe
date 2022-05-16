@@ -126,9 +126,29 @@ namespace API.Controllers
         /// </summary>
         /// <param name="papram">OrderDetail</param>
         [HttpPut]
-        public virtual IActionResult put(OrderDetail papram)
+        public virtual IActionResult put(Order papram)
         {
             ServiceResult result = orderService.updateOrder(papram);
+            if (result.code == statusCode.exception)
+                return StatusCode(500, result);
+            if (result.code == statusCode.success)
+                return StatusCode(201, result.data);
+            if (result.code == statusCode.fail)
+                return StatusCode(200, result.data);
+            else
+                return StatusCode(400, result);
+        }
+
+        /// <summary>
+        /// created date: 6/5/2022
+        /// created by: VXKHANH
+        /// Sửa bản ghi với dữ liêu được lấy tử bodyRequest
+        /// </summary>
+        /// <param name="papram">OrderDetail</param>
+        [HttpPut("orderDetail")]
+        public virtual IActionResult updateOrderDetail(OrderDetail papram)
+        {
+            ServiceResult result = orderService.updateOrderDetail(papram);
             if (result.code == statusCode.exception)
                 return StatusCode(500, result);
             if (result.code == statusCode.success)

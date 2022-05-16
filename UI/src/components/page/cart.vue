@@ -40,7 +40,10 @@
 
                             <!-- Số lượng mua -->
                             <td>
-                                <input type="number" min="1" id="number" name="number" v-model="cartItem.quantity" style="width: 50px">
+                                <input type="number" min="1" id="number" name="number" v-model="cartItem.quantity" style="width: 50px"
+                                    @keyup="updateCart(cartItem)"
+                                    @change="updateCart(cartItem)"
+                                >
                             </td>
                             <!-- / -->
 
@@ -185,6 +188,7 @@ export default {
                         this.cart[j].product = new Object();
                         this.cart[j].product = this.getProductInfor(this.cart[j].productId);
                     }
+                    this.getTotal()
                 }).catch(()=>{
                     console.log("Đã có lỗi xảy ra");
                 })
@@ -206,6 +210,19 @@ export default {
                 })
             }
             this.total = all;
+        },
+
+        /**
+         * created by: Khanhvx
+         * created date: 10/05/2022
+         * Hàm update giỏ hàng
+         */
+        async updateCart(cart){
+            await axios.put(path.cart, cart).then((res)=>{
+                if(res.data > 0){
+                    this.loadCartData();
+                }
+            })
         }
     },
     mounted() {

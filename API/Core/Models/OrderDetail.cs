@@ -31,6 +31,16 @@ namespace Core.Models
         public Guid productId { get; set; }
 
         /// <summary>
+        /// Tên sản phẩm
+        /// </summary>
+        public string productName { get; set; }
+
+        /// <summary>
+        /// Giá sản phẩm sau khi discount
+        /// </summary>
+        public double? price { get; set; }
+
+        /// <summary>
         /// số lượng sản phẩm
         /// </summary>
         [required]

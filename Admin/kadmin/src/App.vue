@@ -18,7 +18,7 @@ export default {
   },
   created(){
     // Kiểm tra login 
-    if(localStorage.getItem('accessToken')){
+    if(!localStorage.getItem('accessToken')){
       this.redirectToLogin()
     }
   },

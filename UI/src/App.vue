@@ -23,7 +23,10 @@ export default {
     contentLayout,
     footerLayout,
     menuLayout
-  }
+  },
+  // created() {
+  //   localStorage.removeItem("customer");
+  // },
 }
 </script>
 

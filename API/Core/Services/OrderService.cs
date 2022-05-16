@@ -181,14 +181,14 @@ namespace Core.Services
         /// </summary>
         /// <param name="orderDetail">orderDetail</param>
         /// <returns></returns>
-        public ServiceResult updateOrder(OrderDetail orderDetail)
+        public ServiceResult updateOrderDetail(OrderDetail orderDetail)
         {
             try
             {
-                this.validateOrderDetail(orderDetail, false);
+                this.validateOrderDetail(orderDetail, true);
                 if (serviceResult.isValid)
                 {
-                    int check = orderRepository.updateOrder(orderDetail);
+                    int check = orderRepository.updateOrderDetail(orderDetail);
                     if (check > 0)
                     {
                         serviceResult.code = statusCode.success;
@@ -316,18 +316,19 @@ namespace Core.Services
         /// <param name="isUpdate"></param>
         public void validateOrder(Order order, bool isUpdate)
         {
+            serviceResult.isValid = true;
             if (isUpdate)
             {
-                return;
-            }
-            else
-            {
-                if(order.customerId == null || order.customerId.ToString().Trim().Equals(""))
+                if (order.customerId == null || order.customerId.ToString().Trim().Equals(""))
                 {
                     serviceResult.isValid = false;
                     serviceResult.code = statusCode.notValid;
                     serviceResult.message = "customerId is required!";
                 }
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -335,10 +336,6 @@ namespace Core.Services
         {
             serviceResult.isValid = true;
             if (isUpdate)
-            {
-                return;
-            }
-            else
             {
                 if (orderDetail.orderId == null || orderDetail.orderId.ToString().Trim().Equals(""))
                 {
@@ -365,6 +362,48 @@ namespace Core.Services
                     serviceResult.message = "Quantity is required!";
                 }
             }
+            else
+            {
+                return;
+            }
+        }
+
+        public ServiceResult updateOrder(Order order)
+        {
+            try
+            {
+                this.validateOrder(order, true);
+                if (serviceResult.isValid)
+                {
+                    int check = orderRepository.updateOrder(order);
+                    if (check > 0)
+                    {
+                        serviceResult.code = statusCode.success;
+                        serviceResult.message = Properties.resource.updatetSuccess;
+                        serviceResult.data = check;
+                    }
+                    else
+                    {
+                        serviceResult.code = statusCode.fail;
+                        serviceResult.message = Properties.resource.updateFail;
+                        serviceResult.data = check;
+                    }
+                }
+                else
+                {
+                    serviceResult.code = statusCode.notValid;
+                    //Không cần gán message vì trong hàm validate đã gán rồi
+                    serviceResult.data = null;
+                }
+            }
+            catch (Exception e)
+            {
+                serviceResult.message = e.Message;
+                serviceResult.isValid = false;
+                serviceResult.data = e.Message;
+                serviceResult.code = statusCode.exception;
+            }
+            return serviceResult;
         }
     }
 }

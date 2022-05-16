@@ -385,6 +385,14 @@ export default {
             this.popup = true;
             this.notifyText = msg;
         },
+
+        /**Hàm dùng để chỉnh lại định dạng ngày khi hiển thị */
+        formatDate(datetime){
+            let date = "";
+            if (datetime)
+                date = String(datetime).substring(0, 10).split("-").reverse().join("/");
+            return date;
+        },
             
     },
     created() {

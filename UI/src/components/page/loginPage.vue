@@ -2,7 +2,9 @@
     <div class="loginPage col-xl-4 container">
         <!-- Thông báo khi có lỗi đăng nhập -->
         <div class="notify container col-xl-12">
-            <div class="alert alert-danger" v-show="loginFail"><i class="fas fa-exclamation-triangle"></i> Tài khoản hoặc mật khẩu không đúng</div>
+            <div class="alert alert-danger" style="font-size: 15px" v-show="loginFail">
+                <i class="fas fa-exclamation-triangle"></i> Tài khoản hoặc mật khẩu không đúng
+            </div>
         </div>
         <!--  -->
         <div class="loginContent container col-xl-12">
@@ -55,7 +57,7 @@
                     <div id="registerLink">
                         <p class="container">
                             Bạn chưa có tài khoản?
-                            <a href="/Account/Register">Đăng ký tại đây</a>
+                            <a href="/register">Đăng ký tại đây</a>
                         </p>
                     </div>
                     <!-- / -->
@@ -80,7 +82,9 @@ export default {
         }
     },
     created(){
-        localStorage.removeItem('customer');
+        if(localStorage.getItem('customer')){
+            this.$router.push('/home');
+        }
     },
     methods: {
         /**
@@ -107,18 +111,19 @@ export default {
         async login(){
             if(this.validate())
             {
-                var response = await axios.post(path.customers+'login', this.user).then((result)=>{
-                    return result.data;
+                let response = null;
+                await axios.post(path.customers+'login', this.user).then((result)=>{
+                    response = result.data;
                 });
-                //console.log(response);
                 if(response != null && response != ""){
                     this.loginFail = false;
                     localStorage.setItem('customer', btoa(JSON.stringify(response)));
-                    this.$router.push('/home');
+                    location.reload();
                 }
-                else
-                    return;
+                else{
                     this.loginFail = true;
+                    return;
+                }
             }
         }
     },

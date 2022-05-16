@@ -19,10 +19,30 @@ namespace Core.Models
         public Guid orderId { get; set; }
 
         /// <summary>
+        /// mã hóa đơn
+        /// </summary>
+        public int? orderCode { get; set; }
+
+        /// <summary>
         /// Id của khách hàng
         /// </summary>
         [required]
         public Guid customerId { get; set; }
+
+        /// <summary>
+        /// Tên khách hàng
+        /// </summary>
+        public string customerName { get; set; }
+
+        /// <summary>
+        /// Số điện thoại của khách hàng
+        /// </summary>
+        public string phoneNumber { get; set; }
+
+        /// <summary>
+        /// Địa chỉ khách hàng
+        /// </summary>
+        public string address { get; set; }
 
         /// <summary>
         /// Trạng thái của hóa đơn

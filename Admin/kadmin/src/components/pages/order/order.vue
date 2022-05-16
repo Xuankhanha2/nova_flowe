@@ -100,24 +100,24 @@
 
                         <!-- Tên khách hàng -->
                         <td colspan="1"
-                        >{{order.customerId}}</td>
+                        >{{order.customerName}}</td>
                         <!-- / -->
 
                         <!-- Số điện thoại khách hàng -->
-                        <td colspan="1" class="">{{order.customerId}}</td>
+                        <td colspan="1" class="">{{order.phoneNumber}}</td>
                         <!-- / -->
 
                          <!-- Ngày lập hóa đơn -->
-                        <td colspan="1" class="">{{order.createdDate}}</td>
+                        <td colspan="1" class="">{{formatDate(order.createdDate)}}</td>
                         <!-- / -->
 
                         <!-- tổng tiền -->
                         <td colspan="1" class="td-to-check align-right-text" >
-                            {{order.orderDetails.productId?order.orderDetails.productId:""}} vnđ</td>
+                            {{ formatMoney(getOrderTotal(order)) }} vnđ</td>
                         <!-- / -->
 
                         <!-- Trạng thái còn hàng -->
-                        <td colspan="1" class="td-to-check">{{order.status}}</td>
+                        <td colspan="1" class="td-to-check">{{showStatus(order.status)}}</td>
                         <!-- / -->
 
                         <!-- Ô chức các nút chức năng  -->
@@ -203,7 +203,7 @@ export default {
             /**Biến  mảng chứa danh sách sản phẩm khi gọi api*/
             orders:[],
             /**Biến tiêu đề của popup thêm - sửa sản phẩm */
-            orderDetailTitle: '',
+            orderDetailTitle: 'Hóa đơn bán hàng',
             /** Biến kiểm tra popup thêm sửa hiển thị lên là thêm hay sửa*/
             isUpdate:false,
             /**Biến mở - đóng popup thêm - sửa */
@@ -222,7 +222,10 @@ export default {
             popupParam:'',
             //Biến sử dung để hiển thị loading khi load dữ liệu 
             loading: false,
-            config: {}
+            config: {},
+            accepted: "Đã duyệt",
+            denied: "Đã hủy",
+            pendding: "Đang chờ duyệt"
         }
     },
     components:{
@@ -246,13 +249,18 @@ export default {
             this.isUpdate = check;
             if(this.isUpdate){
                 this.order = order;
-                this.orderDetailTitle="Cập nhật thông tin sản phẩm";
             }
             else{
                 this.order=null;
-                this.orderDetailTitle="Thêm sản phẩm";
             }
             this.showPopup = true;
+        },
+        /**Hàm dùng để chỉnh lại định dạng ngày khi hiển thị */
+        formatDate(datetime){
+            let date = "";
+            if (datetime)
+                date = String(datetime).substring(0, 10).split("-").reverse().join("/");
+            return date;
         },
         /**Hàm đóng form thêm sửa sản phẩm */
         closeForm(){
@@ -301,8 +309,35 @@ export default {
                 return localStorage.getItem('accessToken');
             else
                 return "";
-        }
+        },
+        /**Hàm xử lý hiện thi trạng thái hóa đơn */
+        showStatus(status){
+            if(status < 0)
+                return this.denied;
+            if(status === 0)
+                return this.pendding;
+            if(status > 0)
+                return this.accepted;
+        },
+        
+        /**Hàm trả về tổng tiền của hóa đơn */
+        getOrderTotal(order){
+            let total = 0;
+            if(order.orderDetails.length > 0)
+            {
+                order.orderDetails.forEach((element) => {
+                    total += element.quantity * element.price;
+                })
+            }
+            return total;
+        },
 
+        /**Hàm format tiền */
+        formatMoney(native){
+            var newPrice = String(native);
+            newPrice = newPrice.toString().split(".").join("");
+            return newPrice.replace(/(\d)(?=(?:\d{3})+$)/g, '$1.');
+        }
     },
 
     async created() {

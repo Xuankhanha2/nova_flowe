@@ -1,0 +1,36 @@
+.order-from{
+    width: 800px;
+    height: auto;
+}
+.remove-border{
+    border: 0px !important;
+}
+.product-list{
+    width: 100%;
+
+}
+.product-grid{
+    width: 100%;
+    margin: 0px;
+    font-size: 13px !important;
+    border: 1px solid #D5D8E6;
+    border-collapse: collapse;
+}
+.product-grid th{
+    text-align: center;
+    font-family: OpenSan-Bold;
+    line-height: 32px;
+}
+.product-grid td{
+    padding: 0px 16px;
+    line-height: 32px;
+}
+.quantity-cell{
+    text-align: center;
+}
+.money-cell{
+    text-align: right;
+}
+.number-cell{
+    text-align: center;
+}
