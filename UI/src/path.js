@@ -8,5 +8,6 @@ const ENDPOINT = {
     login: "https://localhost:44368/api/v1.0/login",
     productKeySearch: "https://localhost:44368/api/v1.0/Products/search?key=",
     cart: "https://localhost:44368/api/v1.0/Carts/",
+    order: 'https://localhost:44368/api/v1.0/orders/'
 }
 export default ENDPOINT;

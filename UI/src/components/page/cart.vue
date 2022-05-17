@@ -86,7 +86,7 @@
                     
                     <h4>Thành tiền: <span id="total">{{ formatMoney(total) }} ₫</span></h4>
                 </div>
-                <a href="/Cart/Checkout"><div class="btn-danger pay">Thanh toán</div></a>
+                <div class="btn-danger pay" @click="payCart()">Thanh toán</div>
             </div>
         </div>
     </div>
@@ -103,6 +103,17 @@ export default {
             cart: [],
             customer: {},
             total: 0,
+            order: {
+                createdDate: null,
+                createdBy: "",
+                modifiedDate: null,
+                orderId: "00000000-0000-0000-0000-000000000000",
+                orderCode: 0,
+                customerId: "00000000-0000-0000-0000-000000000000",
+                status: 0,
+                orderDetails: []
+            },
+            defaultGuid: "00000000-0000-0000-0000-000000000000",
         }
     },
     methods: {
@@ -223,6 +234,48 @@ export default {
                     this.loadCartData();
                 }
             })
+        },
+
+        async payCart(){
+            if(this.customer){
+                this.order.customerId = this.customer.customerId;
+                this.order.status = 0;
+                // Gán các mặt hàng vào trong orderDetails
+                if(this.cart.length > 0){
+                    this.cart.forEach((element) => {
+                        this.order.orderDetails.push({
+                            orderDetailId: this.defaultGuid,
+                            productId: element.productId,
+                            quantity: element.quantity,
+                            createdBy: this.customer.customerName
+                        })
+                    })
+                }
+                console.log(this.order);
+                await axios.post(path.order, this.order).then((res) => {
+                    if(res.data > 0){
+                        this.deleteAllCart();
+                        alert("Đặt hàng thành công!")
+                    }else{
+                        console.log("fail")
+                    }
+                }).catch(() => {
+                    return;
+                })
+            }
+        },
+
+        /**
+         * created by: khanhvx
+         * created date: 11/5/2022
+         * Hàm xóa toàn bộ giỏ hàng của khách hàng
+         */
+        async deleteAllCart(){
+            if(this.cart.length > 0){
+                this.cart.forEach((element) => {
+                    this.deleteCart(element.cartId);
+                })
+            }
         }
     },
     mounted() {
@@ -244,4 +297,7 @@ export default {
 
 <style lang="css" scoped>
     @import url('../../css/page/cart.css');
+    .pay{
+        cursor: pointer;
+    }
 </style>
