@@ -25,48 +25,22 @@
             </div>
         </div>
         <div class="productRow">
-            <!-- <div class="title"><div class="categoryName">TRÁI CÂY MỖI NGÀY</div></div> -->
+            <div class="title">
+                <div class="categoryName">
+                    {{category.categoryName}}
+                </div>
+            </div>
             <div class="productList row">
                 <!-- Ô sản phẩm -->
                 <div class="marginProductCell col-xl-3" 
                     v-for="product in products" 
                     :key="product.productId"
                 >
-                    <div class="productCell">
-                        <img :src="product.image"
-                            class="productImage"
-                            @click="pushToDetail(product.productId)"
-                        >
-                        <h1 class="productName"
-                            @click="pushToDetail(product.productId)"
-                        >{{product.productName}}</h1>
-                        <!-- ratingStar -->
-                        <div class="ratingStars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <!-- end rating Star -->
-
-                        <!--Real price -->
-                        <h2>100.000 đ</h2>
-
-                        <!-- price after discount -->
-                        <p>{{formatMoney(product.price)}} ₫</p>
-
-                        <!-- discount percent -->
-                        <div class="sale">-{{product.discount}}%</div>
-
-                        <!-- button add wishlist -->
-                        <div class="wishlist"><i class="far fa-heart"></i></div>
-
-                        <!-- button Thêm vào giỏ -->
-                        <div class="btn btn-primary" id="btnAddCart"
-                            @click="addCart(product.productId)"
-                        >Thêm vào giỏ</div>
-                    </div>
+                    <productCell
+                        @pushToDetail = "pushToDetail"
+                        @addCart="addCart"
+                        :product="product"
+                    />
                 </div>
                 <!-- /Ô sản phẩm -->
             </div>
@@ -75,12 +49,18 @@
 </template>
 <script>
 import axios from 'axios'
+import productCell from '../shared/productCell.vue'
+import path from '../../path'
 export default {
     data() {
         return {
             cart: {},
             products: [],
+            category: {}
         }
+    },
+    components:{
+        productCell
     },
     methods: {
         /**Hàm format giá tiền sản phẩm
@@ -93,58 +73,83 @@ export default {
             return formatedMoney;
         },
         /**
+         * created by: vxkhanh
+         * created date: 14/11/2021
+         * Hàm load dữ liệu khi trang category được mở 
+         */
+        async loadData(){
+            const categoryId  = this.$route.params.categoryId;
+            if(categoryId != null && String(categoryId) != "")
+            {
+                //Hiển thị sản phẩm theo danh mục được chọn 
+                await axios.get('https://localhost:44368/api/v1.0/Products/categoryId/'+categoryId).then((result)=>{
+                    this.products = result.data;
+                })
+                // Lấy ra loại hoa tương ứng
+                this.getCategory(categoryId);
+            }
+            else{
+                console("Error")
+                return;
+            }
+        },
+
+         /**
          * created date: 09/11/2021
          * created by: vxkhanh
          * Hàm thêm sản phẩm vào giỏ hàng
          */
         async addCart(productId){
-            if(localStorage.getItem('userId'))
+            if(String(localStorage.getItem('customer')).trim() !== "")
             {
-                if(productId != null && productId != ""){
-                    this.cart.productId = productId;
+                let customer = JSON.parse(atob(localStorage.getItem('customer')));
+                if(productId && String(productId).trim !== ""){
+                   
                     //Nhấn nút thêm -> mặc định số lượng thêm là 1 sp
                     this.cart.quantity = 1;
                     //Lấy mã khách hàng đã đăng nhập được lưu trong localStorage
-                    this.cart.customerId = localStorage.getItem('userId');
-                    await axios.post('https://localhost:44368/api/v1.0/Carts', this.cart).then((result)=>{
-                        console.log(result.data);
-                        alert("Đã thêm sản phẩm vào giỏ hàng.");
-                    }).catch(()=>{
-                        console.log("Đã có lỗi hệ thống xảy ra.");
-                    })
+                    this.cart.customerId = customer.customerId;
+                    this.cart.productId = productId;
+                    //Check tồn tại product trong cart chưa
+                    await this.checkExistsProductInCart(this.cart);
+                    if(this.isExistsCart){
+                        this.cart.quantity += 1;
+                        this.updateCart(this.cart);
+                    }
+                    else{
+                        await axios.post(path.cart, this.cart).then((result)=>{
+                            console.log(result.data)
+                            alert("Đã thêm sản phẩm vào giỏ hàng.");
+                            this.isExistsCart = false;
+                        }).catch(()=>{
+                            console.log("Đã có lỗi hệ thống xảy ra.");
+                        })
+                    }
                 }
             }
             else{
                 this.$router.push('/login');
             }
         },
+
         /**
-         * created by: vxkhanh
-         * created date: 14/11/2021
-         * Hàm load dữ liệu khi trang category được mở 
+         * created by: khanhvx
+         * created date: 10/5/2022
          */
-        async loadData(){
-            var categoryId  = this.$route.params.categoryId;
-            if(categoryId != null && categoryId != ""){
-                //Hiển thị sản phẩm theo danh mục được chọn 
-                await axios.get('https://localhost:44368/api/v1.0/Products/categoryId/'+categoryId).then((result)=>{
-                    this.products = result.data;
+        async getCategory(categoryId){
+            if(categoryId){
+                await axios.get(path.categories+categoryId).then((res) => {
+                    if(res.data){
+                        this.category = res.data;
+                    }else{
+                        return;
+                    }
                 })
             }
-            else{
-                // //Nếu ko có tham số categoryId thì mặc định hiện danh sách sản phẩm được phân theo danh mục
-                // await axios.get('https://localhost:44368/api/v1.0/Products').then((result)=>{
-                //     this.products = result.data;
-                // })
-                return;
-            }
-        }
+        },
     },
     async created(){
         this.cart = new Object;
-        this.loadData();
-    },
-    async updated() {
         this.loadData();
     },
 

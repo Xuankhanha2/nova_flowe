@@ -92,7 +92,7 @@
 
                 </div>
                 <div class="extendInfor">
-                    <div class="keyword">từ khóa: <a href="#">hoa quả</a></div>
+                    <div class="keyword">từ khóa: <a href="javascript:void(0)" @click="pushToCategory(product.categoryId)">{{categoryName}}</a></div>
                     <div class="page">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -232,6 +232,7 @@ export default {
         return {
             number: 1,
             product: {},
+            categoryName: "",
         }
     },
     components:{
@@ -276,6 +277,36 @@ export default {
             var formatedMoney = String(money).replace(/(\d)(?=(?:\d{3})+$)/g, '$1.');
             return formatedMoney;
         },
+
+        /**
+         * created date: 5/5/2022
+         * created by: KhanhVX
+         * Lấy tên của loại hoa 
+         */
+        async getCategoryName(categoryId){
+            if(categoryId){
+                await axios.get(path.categories+categoryId).then((res) => {
+                    if(res.data){
+                        this.categoryName = res.data.categoryName;
+                    }else{
+                        return;
+                    }
+                })
+            }
+        },
+
+        /***
+         * created date: 12/11/2021
+         * created by: vxkhanh
+         * Hàm chuyển đến trang danh mục với id tương ứng
+         */
+        pushToCategory(categoryId){
+            let id = String(categoryId);
+            if(id !== "")
+            {
+                this.$router.push({ name: 'category', path:'/category', params: {categoryId: id}});
+            }
+        },
         
     },
     async created() {
@@ -286,6 +317,7 @@ export default {
         //Lấy thông tin sản phẩm theo id trên router
         await axios.get(path.products+id).then((result)=>{
             this.product = result.data;
+            this.getCategoryName(this.product.categoryId);
         }).catch(()=>{
             return;
         });

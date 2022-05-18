@@ -36,7 +36,7 @@ namespace Infastructure.Repositories
         /// <returns></returns>
         public IEnumerable<Product> getProductsByCategory(Guid categoryId, int? orderVal)
         {
-            string procName = $"procGetProductsByCategory";
+            string procName = $"procGetProductByCategoryId";
             DynamicParameters dynamicParameters = new DynamicParameters();
             dynamicParameters.Add("categoryId", categoryId.ToString());
             //Nếu orderVal null thì gán mặc định = 0;

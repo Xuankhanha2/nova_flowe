@@ -10,7 +10,7 @@
                     </router-link>
                     
                     <li>
-                        <router-link to="/category"><span>Danh mục</span></router-link>
+                        <a href="javascript:void(0)"><span>Danh mục</span></a>
                         <div id="subMenu">
                             <div class="row justify-content-start">
                                 <div class="col-xl-3 categoryItem"
@@ -94,10 +94,9 @@ export default {
          * Hàm chuyển đến trang danh mục với id tương ứng
          */
         pushToCategory(categoryId){
-            var id = String(categoryId);
-            if(id && String(id).trim() !== "")
+            let id = String(categoryId);
+            if(id !== "")
             {
-                this.categories = [];
                 this.$router.push({ name: 'category', path:'/category', params: {categoryId: id}});
             }
         },
