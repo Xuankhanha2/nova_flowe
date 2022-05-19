@@ -13,8 +13,9 @@
                         @click.native="openForm(false, {})"
                         />
                     <newButton
-                    :Text="'Sắp lại thứ tự'"
+                        :Text="'Tải lại'"
                         :second="true"
+                        @click.native="loadData()"
                         />
                     <div class="trash-btn"></div>
                 </div>

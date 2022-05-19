@@ -164,9 +164,11 @@ export default {
                     await axios.put(apiPath.categories, this.cloneCategory, this.config).then((result)=>{
                         processResult = result.data;
                         //Hiển thị kết quả sau khi xử lý
-                        this.notifyText = processResult.message;
-                        this.popup = true;
-                        this.loadData();
+                        if(processResult > 0){
+                            this.showNotifyPopup("Đã cập nhật dữ liệu.")                        
+                            this.loadData();
+                        }
+                        
                     }).catch(()=>{
                         this.notifyText = "Đã có lỗi xảy ra.";
                         this.popup = true;
@@ -178,9 +180,10 @@ export default {
                     await axios.post(apiPath.categories, this.cloneCategory, this.config).then((result)=>{
                         processResult = result.data;
                         //Hiển thị kết quả sau khi xử lý
-                        this.notifyText = processResult.message;
-                        this.popup = true;
-                        this.loadData();
+                        if(processResult > 0){
+                            this.showNotifyPopup("Đã thêm dữ liệu mới.")                        
+                            this.loadData();
+                        }
                     }).catch(()=>{
                         this.popup = true;
                         this.notifyText = "Đã có lỗi xảy ra.";
@@ -225,6 +228,17 @@ export default {
             this.closeForm();
             
         },
+
+        /**
+         * created by: khanhvx
+         * created date: 28/04/2022
+         * Hàm thông báo lỗi
+         */
+        showNotifyPopup(msg){
+            this.popup = true;
+            this.notifyText = msg;
+        },
+
         /**load dữ liệu khi thực hiện thêm, sửa thành công */
         loadData(){
             this.$emit('loadData');

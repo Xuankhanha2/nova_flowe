@@ -283,8 +283,10 @@ export default {
                     await axios.put(apiPath.products, this.cloneProduct, this.config).then((result)=>{
                         processResult = result.data;
                         //Hiển thị kết quả sau khi xử lý
-                        this.showNotifyPopup(processResult.message);
-                        this.loadData();
+                        if(processResult > 0){
+                            this.showNotifyPopup("Đã cập nhật dữ liệu");
+                            this.loadData();
+                        }
                     }).catch(()=>{
                         this.showNotifyPopup("Đã có lỗi xảy ra.");
                     })
@@ -294,9 +296,10 @@ export default {
                     await axios.post(apiPath.products, this.cloneProduct, this.config).then((result)=>{
                         processResult = result.data;
                         //Hiển thị kết quả sau khi xử lý
-                        this.notifyText = processResult.message;
-                        this.popup = true;
-                        this.loadData();
+                        if(processResult > 0){
+                            this.showNotifyPopup("Đã thêm dữ liệu mới");
+                            this.loadData();
+                        }
                     }).catch(()=>{
                         this.showNotifyPopup("Đã có lỗi xảy ra.");
                     })

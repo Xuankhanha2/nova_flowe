@@ -11,17 +11,18 @@
                 <!--  -->
                 <div class="filter-right">
                     <!-- Nút thêm  -->
-                    <newButton 
-                        :Text="'Thêm mới'"
-                        :second="false"
-                        @click.native="openForm(false, {})"
-                    />
+                        <!-- <newButton 
+                            :Text="'Thêm mới'"
+                            :second="false"
+                            @click.native="openForm(false, {})"
+                        /> -->
                     <!-- / -->
 
                     <!-- Nút sắp xếp -->
                     <newButton
-                    :Text="'Sắp lại thứ tự'"
+                        :Text="'Tải lại'"
                         :second="true"
+                        @click.native="loadData()"
                     />
                     <div class="trash-btn"></div>
                     <!-- / -->

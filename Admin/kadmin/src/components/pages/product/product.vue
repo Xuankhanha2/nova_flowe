@@ -24,8 +24,9 @@
 
                     <!-- Nút sắp xếp -->
                     <newButton
-                    :Text="'Sắp lại thứ tự'"
+                        :Text="'Tải lại'"
                         :second="true"
+                        @click.native="loadData()"
                         />
                     <div class="trash-btn"></div>
                     <!-- / -->
@@ -222,19 +223,19 @@ export default {
     data() {
         return {
             
-           /**Biến  mảng chứa danh sách sản phẩm khi gọi api*/
-           products:[],
-           /**Biến tiêu đề của popup thêm - sửa sản phẩm */
-           productDetailTitle: '',
-           /** Biến kiểm tra popup thêm sửa hiển thị lên là thêm hay sửa*/
-           isUpdate:false,
-           /**Biến mở - đóng popup thêm - sửa */
-           showPopup: false,
-           /**Biến bật tắt hiển thị danh sách sản phẩm ngừng kinh doanh*/
-           stopBusiness: false,
-           /**Biến lưu trữ 1 thông tin sản phẩm - phục vụ cho việc cập nhật dữ liệu*/
-           product:{},
-           //Biến dùng để lưu danh sách danh mục sản phẩm, sử dụng để tải dữ liệu vào ô chọn danh mục sản phẩm
+            /**Biến  mảng chứa danh sách sản phẩm khi gọi api*/
+            products:[],
+            /**Biến tiêu đề của popup thêm - sửa sản phẩm */
+            productDetailTitle: '',
+            /** Biến kiểm tra popup thêm sửa hiển thị lên là thêm hay sửa*/
+            isUpdate:false,
+            /**Biến mở - đóng popup thêm - sửa */
+            showPopup: false,
+            /**Biến bật tắt hiển thị danh sách sản phẩm ngừng kinh doanh*/
+            stopBusiness: false,
+            /**Biến lưu trữ 1 thông tin sản phẩm - phục vụ cho việc cập nhật dữ liệu*/
+            product:{},
+            //Biến dùng để lưu danh sách danh mục sản phẩm, sử dụng để tải dữ liệu vào ô chọn danh mục sản phẩm
             categories: [{}],
             //Biến providers chứa danh sách cửa hàng, dùng để đưa dữ liêu vào ô chọn cửa hàng cung cấp - nhà phân phối sp
             providers: [{}],

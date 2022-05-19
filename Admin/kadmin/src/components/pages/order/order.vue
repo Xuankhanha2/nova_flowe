@@ -19,8 +19,9 @@
 
                     <!-- Nút sắp xếp -->
                     <newButton
-                    :Text="'Sắp lại thứ tự'"
+                        :Text="'Tải lại'"
                         :second="true"
+                        @click.native="loadData()"
                         />
                     <div class="trash-btn"></div>
                     <!-- / -->
@@ -323,7 +324,7 @@ export default {
         /**Hàm trả về tổng tiền của hóa đơn */
         getOrderTotal(order){
             let total = 0;
-            if(order.orderDetails.length > 0)
+            if(order.orderDetails)
             {
                 order.orderDetails.forEach((element) => {
                     total += element.quantity * element.price;
