@@ -23,7 +23,12 @@ services.AddSwaggerGen(c =>
     });
 });
 
-services.AddCors();
+services.AddCors(option => option.AddPolicy(name: "Origin", builder =>
+{
+    builder.AllowAnyHeader();
+    builder.AllowAnyMethod();
+    builder.WithOrigins("http://localhost:8080", "http://localhost:8081");
+}));
 
 // DI Services
 services.AddScoped<IBaseRepository, BaseRepository>();
@@ -67,7 +72,10 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseCors("Origin");
+
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 // Swagger UI

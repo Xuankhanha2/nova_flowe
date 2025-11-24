@@ -22,19 +22,19 @@ namespace Core.Models
         /// Tên của người dùng
         /// </summary>
         [Required]
-        public string fullName { get; set; }
+        public string? fullName { get; set; }
 
         /// <summary>
         /// tên tài khoản
         /// </summary>
         [Required, Duplicate]
-        public string username { get; set; }
+        public string? username { get; set; }
 
         /// <summary>
         /// Mật khẩu
         /// </summary>
         [Required]
-        public string password { get; set; }
+        public string? password { get; set; }
         #endregion
     }
 }
